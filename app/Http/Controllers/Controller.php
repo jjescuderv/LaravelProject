@@ -9,5 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    //Comentario de prueba #1, pull request desde branch jhonatan
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
