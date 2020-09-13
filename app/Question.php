@@ -10,14 +10,13 @@ use Illuminate\Http\Request;
 class Question extends Model
 {
     //attributes id, question, created_at, updated_at
-    protected $fillable = ['Question'];
+    protected $fillable = ['question'];
 
     public static function validate(Request $request)
     {
         $request->validate([
-            //"Date" => "required",
-            "Question" => "required",
-            "Answer" => "required"
+            "question" => "required",
+            "answers" => "required"
         ]);
     }
 
@@ -33,16 +32,15 @@ class Question extends Model
 
     public function getQuestion()
     {
-        return $this->attributes['Question'];
+        return $this->attributes['question'];
     }
 
     public function setQuestion($question)
     {
-        $this->attributes['Question'] = $question;
+        $this->attributes['question'] = $question;
     }
 
-    public function answers()
-    {
+    public function answers(){
         return $this->hasMany(Answer::class);
     }
 

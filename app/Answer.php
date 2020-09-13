@@ -9,8 +9,8 @@ use App\Question;
 
 class Answer extends Model
 {
-    //attributes id, answer, question_id, created_at, updated_at
-    protected $fillable = ['answer', 'question_id'];
+    //attributes id, answers, question_id, created_at, updated_at
+    protected $fillable = ['answers', 'question_id'];
 
     public function getId()
     {
@@ -24,12 +24,12 @@ class Answer extends Model
 
     public function getAnswer()
     {
-        return $this->attributes['answer'];
+        return $this->attributes['answers'];
     }
 
     public function setAnswer($ans)
     {
-        $this->attributes['answer'] = $ans;
+        $this->attributes['answers'] = $ans;
     }
 
     public function getQuestionId()
@@ -42,7 +42,7 @@ class Answer extends Model
         $this->attributes['question_id'] = $pId;
     }
 
-    public function question(){
+    public function questions(){
         return $this->belongsTo(Question::class);
     }
 }
