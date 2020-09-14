@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 class Car extends Model 
 {
 
-    // Attributes id, licensePlate, color, brand, model, price, description, mileage, availability
-
-    protected $fillable = ['brand', 'model', 'color', 'price', 'mileage', 'description' , 'availability', 'licensePlate'];
+    // Attributes id, brand, color, model, price, mileage, description, availability, license_plate, created_at, updated_at
+    protected $fillable = ['brand', 'model', 'color', 'price', 'mileage', 'description' , 'availability', 'license_plate'];
 
     public static function validate(Request $request) 
     {
@@ -24,7 +23,7 @@ class Car extends Model
             "mileage" => "required|numeric|gte:0",
             "description" => "required",
             "availability" => "required|boolean",
-            "licensePlate" => "required",
+            "license_plate" => "required",
         ]);
     }
 
@@ -110,17 +109,22 @@ class Car extends Model
 
     public function getLicensePlate() 
     {
-        return $this->attributes['licensePlate'];
+        return $this->attributes['license_plate'];
     }
 
     public function setLicensePlate($licensePlate) 
     {
-        $this->attributes['licensePlate'] = $licensePlate;
+        $this->attributes['license_plate'] = $licensePlate;
     }
 
     public function questions() 
     {
         return $this->hasMany(Question::class);
+    }
+
+    public function auction() 
+    {
+        return $this->belongsTo(Auction::class);
     }
 
 }

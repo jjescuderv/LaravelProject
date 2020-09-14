@@ -24,7 +24,7 @@ class CreateCarsTable extends Migration
             $table->integer('mileage');
             $table->text('description');
             $table->boolean('availability');
-            $table->text('licensePlate');
+            $table->text('license_plate');
             $table->timestamps();
         });
     }
