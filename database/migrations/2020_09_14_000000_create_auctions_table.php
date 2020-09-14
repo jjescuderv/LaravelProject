@@ -17,7 +17,6 @@ class CreateAuctionsTable extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('reserve');
             $table->integer('reserve_price');
             $table->dateTime('beginning');
             $table->dateTime('ending');

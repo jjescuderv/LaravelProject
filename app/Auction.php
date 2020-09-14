@@ -9,13 +9,12 @@ use Illuminate\Http\Request;
 
 class Auction extends Model 
 {
-    // Attributes id, reserve, reserve_price, beginning, ending, state, car_id, created_at, updated_at
-    protected $fillable = ['reserve', 'reserve_price', 'beginning', 'ending', 'state', 'car_id'];
+    // Attributes id, reserve_price, beginning, ending, state, car_id, created_at, updated_at
+    protected $fillable = ['reserve_price', 'beginning', 'ending', 'state', 'car_id'];
 
     public static function validate(Request $request) 
     {
         $request -> validate([
-            "reserve" => "required",
             "reserve_price" => "required|numeric|gt:0",
             "beginning" => "required|date",
             "ending" => "required|date",
