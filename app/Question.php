@@ -42,8 +42,7 @@ class Question extends Model
         $this->attributes['question'] = $question;
     }
 
-    public function answers()
-    {
+    public function answers(){
         return $this->hasMany(Answer::class);
     }
 
