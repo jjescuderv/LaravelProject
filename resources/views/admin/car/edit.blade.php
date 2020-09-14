@@ -71,7 +71,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"> Plate </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="licensePlate" value="{{ $data['car']->getLicensePlate() }}" >
+                                    <input class="form-control" type="text" name="license_plate" value="{{ $data['car']->getLicensePlate() }}" >
                                 </div>
                             </div>
                             <div class="text-center">

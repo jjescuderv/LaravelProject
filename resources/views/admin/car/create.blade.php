@@ -73,7 +73,7 @@
                                 <label class="col-sm-2 col-form-label"> Plate </label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" placeholder="Enter license plate" 
-                                     name="licensePlate" value="{{ old('licensePlate') }}" >
+                                     name="license_plate" value="{{ old('license_plate') }}" >
                                 </div>
                             </div>
                             <div class="text-center">
