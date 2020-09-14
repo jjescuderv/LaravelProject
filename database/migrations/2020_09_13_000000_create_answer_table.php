@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 //Andrew Pérez
 
-class CreateAnswersTable extends Migration
+class CreateAnswerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,8 +18,8 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('answer');
-            $table->bigInteger('question_id');
-            $table->foreign('question_id')->references('id')->on('questions');
+            $table->unsignedBigInteger('question_id');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
     }

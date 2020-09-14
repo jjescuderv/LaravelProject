@@ -14,6 +14,7 @@ class QuestionController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Questions";
         $data["question"] = Question::with("answers")->get();
+
         return view('question.details')->with("data",$data);
     }
 
@@ -31,6 +32,7 @@ class QuestionController extends Controller
         
         Question::validate($request);
         Question::create($request->only(["Question","Answer"]));
+
         return back()->with('success','Item created successfully!');
 
         //return view('question.save');
@@ -41,6 +43,7 @@ class QuestionController extends Controller
     public function delete($id)
     {
         Question::where('id', $id)->delete();
+        
         return redirect()->route('question.details');
     }
 
