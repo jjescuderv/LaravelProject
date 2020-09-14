@@ -52,7 +52,7 @@ class AdminCarController extends Controller
         Car::validate($request);
         Car::create(
             $request->only([
-                "brand", "model", "color", "price", "mileage", "description", "availability", "licensePlate"
+                "brand", "model", "color", "price", "mileage", "description", "availability", "license_plate"
             ])
         );
 

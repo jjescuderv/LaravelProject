@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 //Juan José Escudero
 
-class CreateCarsTable extends Migration
+class CreateAuctionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,16 +15,14 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('auctions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('brand');
-            $table->text('color');
-            $table->text('model');
-            $table->integer('price');
-            $table->integer('mileage');
-            $table->text('description');
-            $table->boolean('availability');
-            $table->text('license_plate');
+            $table->integer('reserve_price');
+            $table->dateTime('beginning');
+            $table->dateTime('ending');
+            $table->boolean('state');
+            $table->unsignedBigInteger('car_id');
+            $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ class CreateCarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('auctions');
     }
 }

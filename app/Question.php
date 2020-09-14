@@ -10,15 +10,13 @@ use Illuminate\Http\Request;
 class Question extends Model
 {
     //attributes id, question, created_at, updated_at
-    protected $fillable = ['question'];
+    protected $fillable = ['question', 'car_id'];
 
     public static function validate(Request $request)
     {
         $request->validate([
-            //"Date" => "required",
             "question" => "required",
-            "answer" => "required",
-            "car" => "required"
+            "car_id" => "required|numeric|gt:0"
         ]);
     }
 
@@ -50,4 +48,5 @@ class Question extends Model
     {
         return $this->belongsTo(Car::class);
     }
+    
 }
