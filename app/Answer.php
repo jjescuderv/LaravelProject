@@ -45,4 +45,5 @@ class Answer extends Model
     public function questions(){
         return $this->belongsTo(Question::class);
     }
+    
 }

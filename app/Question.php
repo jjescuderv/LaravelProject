@@ -15,8 +15,10 @@ class Question extends Model
     public static function validate(Request $request)
     {
         $request->validate([
+            //"Date" => "required",
             "question" => "required",
-            "answers" => "required"
+            "answer" => "required",
+            "car" => "required"
         ]);
     }
 
@@ -44,5 +46,8 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
-
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

@@ -15,5 +15,20 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/home', 'HomeController@index')->name("home.index");
 Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index");
+
+Route::get('/admin/car', 'Admin\AdminCarController@showAll')->name("admin.car.index");
+Route::get('/admin/car/show/{id}', 'Admin\AdminCarController@show')->name("admin.car.show");
+Route::get('/admin/car/create', 'Admin\AdminCarController@create')->name("admin.car.create");
+Route::get('/admin/car/edit/{id}', 'Admin\AdminCarController@edit')->name("admin.car.edit");
+Route::post('/admin/car/save', 'Admin\AdminCarController@save')->name("admin.car.save");
+Route::post('/admin/car/update/{id}', 'Admin\AdminCarController@update')->name("admin.car.update");
+Route::delete('/admin/car/delete/{id}', 'Admin\AdminCarController@delete')->name("admin.car.delete");
+
 Auth::routes();
+/**
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+*/
