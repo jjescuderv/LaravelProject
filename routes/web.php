@@ -27,9 +27,20 @@ Route::post('/admin/car/save', 'Admin\AdminCarController@save')->name("admin.car
 Route::post('/admin/car/update/{id}', 'Admin\AdminCarController@update')->name("admin.car.update");
 Route::delete('/admin/car/delete/{id}', 'Admin\AdminCarController@delete')->name("admin.car.delete");
 
+/** Routes para administrar la clase Auction */
+Route::get('/admin/auction', 'Admin\AdminAuctionController@showAll')->name("admin.auction.index");
+Route::get('/admin/auction/show/{id}', 'Admin\AdminAuctionController@show')->name("admin.auction.show");
+Route::get('/admin/auction/create', 'Admin\AdminAuctionController@create')->name("admin.auction.create");
+Route::get('/admin/auction/edit/{id}', 'Admin\AdminAuctionController@edit')->name("admin.auction.edit");
+Route::post('/admin/auction/save', 'Admin\AdminAuctionController@save')->name("admin.auction.save");
+Route::post('/admin/auction/update/{id}', 'Admin\AdminAuctionController@update')->name("admin.auction.update");
+Route::delete('/admin/auction/delete/{id}', 'Admin\AdminAuctionController@delete')->name("admin.auction.delete");
+
 /** Routes para los Carros */
 Route::get('/car', 'CarController@showAll')->name("car.index");
 Route::get('/car/show/{id}', 'CarController@show')->name("car.show");
+
+/** Routes para las Auctions */
 
 /** Routes para las Ordenes */
 Route::get('/admin/car/order{id}', 'OrderController@show')->name("order");
