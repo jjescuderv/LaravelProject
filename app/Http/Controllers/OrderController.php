@@ -20,6 +20,7 @@ class OrderController extends Controller
         $data["car"] = $car;
         $user_id = Auth::user()->getId();
         $data["user_id"] = $user_id;
+        
         return view('order')->with("data", $data);
     }
     
