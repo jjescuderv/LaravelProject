@@ -1,5 +1,5 @@
 <?php
-
+//Jhonatan Acevedo Castrillón
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -38,9 +38,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
     public function getRole()
     {
         return $this->attributes['role'];
+    }
+
+    public function order() 
+    {
+        return $this->hasMany(Order::class);
     }
 
     protected function validator(array $data)
