@@ -11,10 +11,10 @@
                             The database is empty!
                         @endif
                         @foreach($data["cars"] as $car)
-                            <a href="{{ route('admin.car.show', $car['id']) }}">
+                            <a href="{{ route('admin.car.show', $car->getId()) }}">
                             <div class="row" id="row-all">  
                                 <div class="col-2"> 
-                                    {{ $car["id"] }} 
+                                    {{ $car->getId() }} 
                                 </div>
                             
                                 <div class="col-7">
