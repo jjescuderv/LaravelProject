@@ -17,8 +17,8 @@
                                 @csrf
                             </form>
 
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('admin.car.edit', $data['car']->getId()) }}" > Update </a>
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('order', $data['car']->getId()) }}" > Buy </a>
+                            <a class="btn btn-info btn-xs float-right"
+                                href="{{ route('admin.car.edit', $data['car']->getId()) }}"> Update </a>
                         </div>
                     </div>
                 </div>
@@ -53,12 +53,48 @@
                     </div>
                     <div class="row">
                         <div class="col"><b>Availability: </b></div>
-                        <div class="col"> 
+                        <div class="col">
                             @if($data["car"]->getAvailability())
                                 Available
                             @else
                                 Not Available
                             @endif
+                        </div>
+                    </div>
+                    <!-- Questions -->
+                    <div class="card auction-car-info">
+                        <div class="card-header">
+                            Questions
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                @foreach($data["questions"] as $question)
+                                <li>
+                                    {{ $question->getQuestion() }}
+                                    <ul>
+                                        @foreach($question->answers as $answer)
+                                        <li>
+                                            {{ $answer->getAnswer() }}
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                    <form method="POST" action="{{ route('car.answer', $question->getId()) }}">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Enter answer"
+                                                 name="answer" value="{{ old('question') }}">
+                                                <input class="form-control" type="hidden" name="question_id"
+                                                 value="{{ $question->getId() }}">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="submit" class="btn btn-info" value="Post">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>

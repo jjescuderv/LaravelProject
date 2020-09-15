@@ -11,12 +11,12 @@ use App\Question;
 class Answer extends Model
 {
     //attributes id, answers, question_id, created_at, updated_at
-    protected $fillable = ['answers', 'question_id'];
+    protected $fillable = ['answer', 'question_id'];
 
     public static function validate(Request $request)
     {
         $request->validate([
-            "answers" => "required",
+            "answer" => "required",
             "question_id" => "required|numeric|gt:0"
         ]);
     }
@@ -33,25 +33,16 @@ class Answer extends Model
 
     public function getAnswer()
     {
-        return $this->attributes['answers'];
+        return $this->attributes['answer'];
     }
 
     public function setAnswer($ans)
     {
-        $this->attributes['answers'] = $ans;
+        $this->attributes['answer'] = $ans;
     }
 
-    public function getQuestionId()
+    public function questions()
     {
-        return $this->attributes['question_id'];
-    }
-
-    public function setQuestionId($pId)
-    {
-        $this->attributes['question_id'] = $pId;
-    }
-
-    public function questions(){
         return $this->belongsTo(Question::class);
     }
     

@@ -8,43 +8,25 @@ use App\Question;
 
 class QuestionController extends Controller
 {
-    public function details()
-    {
-
-        $data = []; //to be sent to the view
-        $data["title"] = "Questions";
-        $data["question"] = Question::with("answers")->get();
-
-        return view('question.details')->with("data",$data);
-    }
-
-    public function create()
-    {
-        $data = []; //to be sent to the view
-        $data["title"] = "Create Question";
-        $data["question"] = Question::with("answers")->get();
-
-        return view('question.create')->with("data",$data);
-    }
 
     public function save(Request $request)
     {
-        
         Question::validate($request);
-        Question::create($request->only(["Question","Answer"]));
+        Question::create(
+            $request->only([
+                "question", "car_id"
+            ])
+        );
 
-        return back()->with('success','Item created successfully!');
-
-        //return view('question.save');
-        //dd($request->all());
-        //here goes the code to call the model and save it to the database
+        return back()->with('success', 'Question posted!');
     }
 
+    // Sin hacer
     public function delete($id)
     {
         Question::where('id', $id)->delete();
         
-        return redirect()->route('question.details');
+        return redirect()->route('car.index');
     }
 
 }
