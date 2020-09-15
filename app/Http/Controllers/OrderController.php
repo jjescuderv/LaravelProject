@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Car;
+use App\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -15,7 +18,9 @@ class OrderController extends Controller
         $data = [];
         $car = Car::findOrFail($id);
         $data["car"] = $car;
-
+        $user_id = Auth::user()->getId();
+        $data["user_id"] = $user_id;
+        
         return view('order')->with("data", $data);
     }
     

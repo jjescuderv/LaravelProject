@@ -16,9 +16,6 @@ Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/home', 'HomeController@index')->name("home.index");
 Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index");
 
-
-
-
 Route::get('/admin/car', 'Admin\AdminCarController@showAll')->name("admin.car.index");
 Route::get('/admin/car/show/{id}', 'Admin\AdminCarController@show')->name("admin.car.show");
 
