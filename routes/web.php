@@ -47,9 +47,10 @@ Route::get('/auction', 'AuctionController@showAll')->name("auction.index");
 Route::get('/auction/show/{id}', 'AuctionController@show')->name("auction.show");
 
 /** Routes para las Ordenes */
-Route::get('/admin/car/order{id}', 'OrderController@show')->name("order");
-Route::get('/admin/car/order/cancel', 'OrderController@cancel')->name("order.cancel");
-Route::post('/admin/car/order/save', 'OrderController@save')->name("order.save");
+Route::get('/car/order{id}', 'OrderController@show')->name("order");
+Route::get('/car/order/cancel', 'OrderController@cancel')->name("order.cancel");
+Route::post('/car/order/save', 'OrderController@save')->name("order.save");
+
 
 
 Auth::routes();
