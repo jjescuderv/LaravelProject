@@ -1,28 +1,26 @@
-@extends('layouts.admin_master')
-@section("title", 'Show')
+@extends('layouts.master')
+@section("title", 'Order')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 padding-admin">
+        
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            Car id: {{ $data["car"]->getId() }}
+                            Order:
                         </div>
                         <div class="col">
-                            <form method="POST" action="{{ route('admin.car.delete', $data['car']->getId()) }}">
-                                <input type="submit" class="btn btn-danger float-right" value="Delete">
-                                @method('delete')
-                                @csrf
-                            </form>
 
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('admin.car.edit', $data['car']->getId()) }}" > Update </a>
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('order', $data['car']->getId()) }}" > Buy </a>
+                            <a class="btn btn-info btn-xs float-right" href="{{ route('order.cancel') }}" > Cancel </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col"><b>Car-id: </b></div>
+                        <div class="col"> {{ $data["car"]->getId() }} </div>
+                    </div>
                     <div class="row">
                         <div class="col"><b>Brand: </b></div>
                         <div class="col"> {{ $data["car"]->getBrand() }} </div>
@@ -61,9 +59,18 @@
                             @endif
                         </div>
                     </div>
+
+                     <form class="link_mimic" form method="POST" action="{{ route('order.save') }}">
+                        @csrf
+                        <input type="hidden" name="car_id" value=" {{$data["car"]->getId()}}">
+                        <input type="hidden" name="user_id" value=" {{$data["car"]->getId()}}">
+                        <input type="hidden" name="total_price" value=" {{$data["car"]->getPrice()}}">
+                        <input type="submit" class="btn btn-success" value="Continue">
+                      </form> 
+
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
 @endsection

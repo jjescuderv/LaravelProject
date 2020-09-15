@@ -127,4 +127,9 @@ class Car extends Model
         return $this->belongsTo(Auction::class);
     }
 
+    public function order() 
+    {
+        return $this->belongsTo(Order::class);
+    }
+
 }
