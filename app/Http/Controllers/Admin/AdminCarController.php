@@ -28,6 +28,9 @@ class AdminCarController extends Controller
         $data = [];
         $car = Car::findOrFail($id);
         $data["car"] = $car;
+ 
+        $questions = $car->questions;
+        $data["questions"] = $questions;
 
         return view('admin.car.show')->with("data", $data);
     }
@@ -65,9 +68,6 @@ class AdminCarController extends Controller
 
         $car = Car::findOrFail($id);
         $data["car"] = $car;
-
-        $questions = $car->questions;
-        $data["questions"] = $questions;
 
         return view('admin.car.edit')->with("data", $data);
     }

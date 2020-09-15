@@ -54,6 +54,42 @@
                             @endif
                         </div>
                     </div>
+                    <!-- Questions -->
+                    <div class="card auction-car-info">
+                        <div class="card-header">
+                            Questions
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('car.question', $data['car']->getId()) }}">
+                                @csrf
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" placeholder="Enter question" 
+                                         name="question" value="{{ old('question') }}" >
+                                        <input class="form-control" type="hidden" name="car_id" value="{{ $data['car']->getId() }}" >
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="submit" class="btn btn-info" value="Post">
+                                    </div>
+                                </div>
+                            </form>
+
+                            <ul>
+                                @foreach($data["questions"] as $question)
+                                    <li>
+                                        {{ $question->getQuestion() }}
+                                        <ul>
+                                            @foreach($question->answers as $answer)
+                                                <li>
+                                                    {{ $answer->getAnswer() }}
+                                                </li>
+                                            @endforeach    
+                                        </ul>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
