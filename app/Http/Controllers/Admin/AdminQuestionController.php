@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Answer;
 
@@ -9,6 +10,18 @@ use App\Answer;
 
 class AdminQuestionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            if(Auth::user()->getRole()=="client"){
+                return redirect()->route('home.index');
+            }
+    
+            return $next($request);
+        });
+    }
 
     public function answer(Request $request)
     {

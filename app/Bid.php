@@ -10,12 +10,11 @@ use Illuminate\Http\Request;
 class Bid extends Model 
 {
     // Attributes id, date, bid_value, auction_id, user_id, created_at, updated_at
-    protected $fillable = ['date', 'bid_value', 'auction_id', 'user_id'];
+    protected $fillable = ['bid_value', 'auction_id', 'user_id'];
 
     public static function validate(Request $request) 
     {
         $request -> validate([
-            "date" => "required|date",
             "bid_value" => "required|numeric|gt:0",
             "auction_id" => "required|numeric|gt:0",
             "user_id" => "required|numeric|gt:0"
