@@ -85,7 +85,11 @@ class Auction extends Model
 
     public function car() 
     {
-        return $this->hasOne(Car::class);
+        return $this->belongsTo(Car::class);
+    }
+
+    public function bids() {
+        return $this->hasMany(Bid::class);
     }
 
 }
