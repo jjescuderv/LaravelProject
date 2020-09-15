@@ -13,9 +13,11 @@
             <div class="divider-custom-line"></div>
         </div>
 
-        <a class="btn btn-info float-right" href="{{ action('OrderController@cancel', $data['car_id']) }}" > Download PDF-Bid </a>
-        
-          
+       
+        <form class="link_mimic" form method="POST" action="{{ route('order.download', $data['car_id'])}}">
+            @csrf
+            <input type="submit" class="btn btn-info float-right" value="Download PDF-Bid">
+          </form> 
     </div>
 </section>
 @endsection
