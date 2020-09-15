@@ -8,11 +8,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            Order:
+                            Order details:
                         </div>
                         <div class="col">
 
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('order.cancel') }}" > Cancel </a>
+                            <a class="btn btn-danger float-right" href="{{ route('order.cancel') }}" > Cancel </a>
                         </div>
                     </div>
                 </div>
@@ -32,10 +32,6 @@
                     <div class="row">
                         <div class="col"><b>Color: </b></div>
                         <div class="col"> {{ $data["car"]->getColor() }} </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"><b>Price: </b></div>
-                        <div class="col"> {{ $data["car"]->getPrice() }} </div>
                     </div>
                     <div class="row">
                         <div class="col"><b>Mileage: </b></div>
@@ -59,13 +55,17 @@
                             @endif
                         </div>
                     </div>
-
-                     <form class="link_mimic" form method="POST" action="{{ route('order.save') }}">
+                    <div class="row">
+                        <div class="col"><b>Payment: </b></div>
+                        <div class="col"><b> {{ $data["car"]->getPrice() }} $</b></div>
+                    </div>
+                    <br>
+                     <form class="link_mimic" form method="POST" action="{{ route('order.save', $data['car']->getId()) }}">
                         @csrf
                         <input type="hidden" name="car_id" value=" {{$data["car"]->getId()}}">
                         <input type="hidden" name="user_id" value=" {{$data["user_id"]}}">
                         <input type="hidden" name="total_price" value=" {{$data["car"]->getPrice()}}">
-                        <input type="submit" class="btn btn-success" value="Continue">
+                        <input type="submit" class="btn btn-success float-right" value="Confirm">
                       </form> 
 
                 </div>

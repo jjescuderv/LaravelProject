@@ -11,7 +11,11 @@
                             Car id: {{ $data["car"]->getId() }}
                         </div>
                         <div class="col">
-                            <a class="btn btn-info btn-xs float-right" href="{{ route('order', $data['car']->getId()) }}" > Buy </a>
+                            @guest
+                                <a class="btn btn-info btn-xs float-right" href="{{ route('login') }}" > Login to buy </a>
+                            @else
+                                <a class="btn btn-info btn-xs float-right" href="{{ route('order', $data['car']->getId()) }}" > Buy </a>
+                            @endguest
                         </div>
                     </div>
                 </div>
