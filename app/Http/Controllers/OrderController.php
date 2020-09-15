@@ -45,13 +45,7 @@ class OrderController extends Controller
 
     }
 
-    public function download() 
-    {
-
-    }
-
-
-    public function cancel($data) 
+    public function download($data) 
     {
         $total_price = $data["total_price"] ;
         $car_id = $data["car_id"];
@@ -63,6 +57,12 @@ class OrderController extends Controller
         $pdf->loadHTML($cadena);
      
         return $pdf->download('Order.pdf');
+    }
+
+
+    public function cancel($data) 
+    {
+        return redirect('/car');
     }
 
     
