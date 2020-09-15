@@ -54,6 +54,16 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [

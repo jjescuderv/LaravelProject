@@ -42,14 +42,14 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"> Price </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Enter price" 
+                                    <input class="form-control" type="number" placeholder="Enter price" 
                                      name="price" value="{{ old('price') }}" >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"> Mileage </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Enter mileage" 
+                                    <input class="form-control" type="number" placeholder="Enter mileage" 
                                      name="mileage" value="{{ old('mileage') }}" >
                                 </div>
                             </div>
