@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">Luxury Used Cars</a>
+                <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">Autolombia</a>
                 <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -65,7 +65,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Used-luxury cars for sale</p>
+                <p class="masthead-subheading font-weight-light mb-0">Used cars for sale</p>
             </div>
         </header>
         @yield('content')
@@ -92,9 +92,9 @@
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Luxury Used Cars</h4>
+                        <h4 class="text-uppercase mb-4">About autolombia</h4>
                         <p class="lead mb-0">
-                            Luxury Used Cars is Great!
+                            Autolombia is Great!
                         </p>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright © Luxury used cars 2020</small></div>
+            <div class="container"><small>Copyright © Autolombia 2020</small></div>
         </div>
         <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
         <div class="scroll-to-top d-lg-none position-fixed">
