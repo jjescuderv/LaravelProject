@@ -37,25 +37,31 @@ class OrderController extends Controller
         );
 
         $data = [];
-        $data["total_price"] = $request->input('total_price');
         $data["car_id"] = $request->input('car_id');
-        $data["user_id"] = $request->input('user_id');
+
+        
 
         return view('/home/successbuy')->with("data", $data);
 
     }
 
-    public function download($data) 
+    public function download($id)
     {
-        $total_price = $data["total_price"] ;
-        $car_id = $data["car_id"];
-        $user_id = $data["user_id"];
+        $order = Order::where('car_id', $id)->get();
+        echo $order[0]["id"];
+        $order_id = $order[0]["id"];
+        $user_id = $order[0]["user_id"];
+        $car_id = $order[0]["car_id"];
+        $total_price =$order[0]["total_price"];
+        $created_at =$order[0]["created_at"];
         
         $pdf = app('dompdf.wrapper');
-        $cadena = "<h1>".$car_id.$total_price.$user_id."</h1";
+        $cadena = "Factura #: ".$order_id."<br>"."Usuario identificado con el id: ".$user_id."<br>"."Carro #: ".$car_id."<br>"."Precio total: ".$total_price." $(USD)<br>"."Fecha de compra: ".$created_at."<br>";
 
         $pdf->loadHTML($cadena);
-     
+        
+        //Car::where('id', $data["car_id"])->delete();
+        
         return $pdf->download('Order.pdf');
     }
 

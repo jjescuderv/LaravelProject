@@ -51,6 +51,7 @@ Route::post('/auction/show/{id}/bid', 'BidController@save')->name("auction.bid")
 Route::get('/car/order{id}', 'OrderController@show')->name("order");
 Route::get('/car/order/cancel', 'OrderController@cancel')->name("order.cancel");
 Route::post('/car/order/save', 'OrderController@save')->name("order.save");
+Route::post('/car/order/download/{id}', 'OrderController@download')->name("order.download");
 
 
 
